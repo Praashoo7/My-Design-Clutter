@@ -187,6 +187,7 @@ body{
 }
 .imageData:hover, .imageDataUD:hover{
   background-color: #252525;
+  border-radius: 4px;
 }
 .imageDataUD{
     transform: rotateZ(-1deg);
