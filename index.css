@@ -143,7 +143,7 @@ body{
     padding: 1.5em 2.5em 1.5em 2.5em;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
     border-radius: 10px;
-    background-image: url(/textures/textFieldPaper.jpg);
+    background-image: url(textures/textFieldPaper.jpg);
     background-repeat: no-repeat;
     background-size: 101% 100%;
 }
