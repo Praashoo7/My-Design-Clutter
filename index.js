@@ -153,7 +153,7 @@ document.querySelectorAll('.imageDataUD').forEach((imageData) => {
 
 const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 if(isTouchDevice){
-  document.getElementById('note').innerHTML = 'Note : Tap on the Images to see the Actual site Design!'
+  document.getElementById('note').innerHTML = 'PS : Tap on the Images to see the Actual site Design!'
 } else {
-  document.getElementById('note').innerHTML = 'Note : Hover over the Images to see the Actual site Design!'
+  document.getElementById('note').innerHTML = 'PS : Hover over the Images to see the Actual site Design!'
 }
