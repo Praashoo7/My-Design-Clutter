@@ -180,7 +180,7 @@ body{
     flex-direction: column;
     gap: 2em;
 }
-.wrapper, .wrapperUD{
+.wrapper{
     height: 100%;
     position: relative;
     width: 100%;
@@ -190,7 +190,7 @@ body{
     gap: 4em;
 }
 
-.imageData, .imageDataUD{
+.imageData, .pin1{
     width: 100%;
     height: 100%;
     aspect-ratio: 1.91/1;
@@ -201,14 +201,11 @@ body{
     transform: rotateZ(1deg);
     border-radius: 15px;
 }
-.imageData:hover, .imageDataUD:hover{
+.imageData:hover{
   background-color: #252525;
   border-radius: 4px;
 }
-.imageDataUD{
-    transform: rotateZ(-1deg);
-}
-.imageData::before, .imageDataUD::before{
+.imageData::before, .pin1::before{
     content: "";
     position: absolute;
     background-image: url(textures/pin.png);
@@ -222,14 +219,14 @@ body{
     z-index: 10;
     filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.25));
 }
-.imageDataUD::before{
-    left: auto;
-    top: 0;
-    right: 0;
-    margin-right: 10em;
+.pin1::before{
+  left: auto;
+  top: 0;
+  right: 0;
+  margin-right: 10em;
 }
 
-.imageData::after, .imageDataUD::after{
+.imageData::after{
     content: '';
     opacity: var(--before-opacity);
     position: absolute;
@@ -260,7 +257,7 @@ body{
     }
 }
 
-.imageData img, .imageDataUD img, .imageData video, .imageDataUD video{
+.imageData img, .imageData video{
     width: 100.1%;
     height: 100.1%;
     border-radius: 15px;
@@ -268,7 +265,7 @@ body{
     transition: all 0.2s ease-in-out;
     z-index: 4;
 }
-.imageData video, .imageDataUD video{
+.imageData video{
   position: absolute;
   width: 99.5%;
   height: 99.5%;
@@ -305,14 +302,14 @@ body{
   pointer-events: none;
 }
 
-.imageData:hover img, .imageDataUD:hover img{
+.imageData:hover img{
   opacity: 0;
 }
-.imageData:hover video, .imageDataUD:hover video, .imageData:hover .videoLoad, .imageDataUD:hover .videoLoad{
+.imageData:hover video, .imageData:hover .videoLoad{
   border-radius: 4px;
 }
 
-.textData, .textDataUD{
+.textData{
     width: 100%;
     height: 100%;
     display: flex;
@@ -487,7 +484,7 @@ footer{
     .mainWrapper{
         padding: 2em;
     }
-    .wrapper, .wrapperUD{
+    .wrapper{
         grid-template-columns: repeat(1, 1fr);
         gap: 2.5em;
         grid-auto-flow: dense;
@@ -517,12 +514,12 @@ footer{
         width: 15em;
         margin-left: -5.5em;
     }
-    .imageData img, .imageDataUD img, .data, .dataUD, .imageData::after, .imageDataUD::after, .imageData video, .imageDataUD video, .videoLoad, .imageData, .imageDataUD{
+    .imageData img, .data, .dataUD, .imageData::after, .imageData video, .videoLoad, .imageData{
         border-radius: 10px;
     }
 }
 @media screen and (max-width: 768px) {
-    .imageData::before, .imageDataUD::before{
+    .imageData::before, .pin1::before{
         width: 2em;
         height: 2em;
         background-size: 2em 2em;
@@ -578,7 +575,7 @@ footer{
     .data, .dataUD, footer{
         font-size: 1.5em;
     }
-    .wrapper, .wrapperUD{
+    .wrapper{
         gap: 0.5em;
     }
     .pencil{
@@ -588,7 +585,7 @@ footer{
     .data, .dataUD, footer{
         font-size: 1.5em;
     }
-    .imageData img, .imageDataUD img, .data, .dataUD, .imageData::after, .imageDataUD::after, .imageData video, .imageDataUD video, .videoLoad, .imageData, .imageDataUD{
+    .imageData img, .data, .dataUD, .imageData::after, .imageData video, .videoLoad, .imageData{
         border-radius: 5px;
     }
     .welcomeText{
