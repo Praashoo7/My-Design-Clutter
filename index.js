@@ -36,6 +36,7 @@ document.querySelectorAll('.imageData').forEach((imageData) => {
   const img = imageData.querySelector('img');
   const video = imageData.querySelector('.video');
   const videoLoad = imageData.querySelector('.videoLoad');
+  const muteCheck = document.getElementById('muteCheck');
   let videoLoaded = false;
 
   imageData.addEventListener('mouseenter', () => {
@@ -54,7 +55,15 @@ document.querySelectorAll('.imageData').forEach((imageData) => {
           video.style.opacity = '1';
           setTimeout(() => {
             videoLoad.style.opacity = '0';
+            if (videoLoad.id === "nfsVideoLoad") {
+              muteCheck.style.zIndex = 10;
+            }
           }, 800);
+
+          setTimeout(() => {
+            videoLoad.style.display = 'none';
+          }, 1200);
+
           video.play();
         }
       }, { once: true });
@@ -64,6 +73,15 @@ document.querySelectorAll('.imageData').forEach((imageData) => {
       videoLoad.style.width = "100.1%"
       videoLoad.style.height = "100.1%"
       videoLoad.style.opacity = '0';
+
+      if (videoLoad.id === "nfsVideoLoad") {
+        muteCheck.style.zIndex = 10;
+      }
+
+      setTimeout(() => {
+        videoLoad.style.display = 'none';
+      }, 800);
+
       video.style.opacity = '1';
       video.play();
     }
@@ -77,8 +95,32 @@ document.querySelectorAll('.imageData').forEach((imageData) => {
     img.style.opacity = '1';
     video.pause();
     video.style.opacity = '0';
-    videoLoad.style.opacity = '1';
+    videoLoad.style.display = 'flex';
+
+    if (videoLoad.id === "nfsVideoLoad") {
+      muteCheck.style.zIndex = 1;
+    }
+
+    setTimeout(() => {
+      videoLoad.style.opacity = 1;
+    }, 800);
   });
+});
+
+document.getElementById("checkboxMute").addEventListener("change", function() {
+  let video = document.getElementById("nfsMute");
+
+  if (this.checked) {
+    if(window.innerWidth > 690){
+      document.querySelector('.line').style.minHeight = '1.25em'
+    } else {
+      document.querySelector('.line').style.minHeight = '0.65em'
+    }
+      video.muted = true;
+  } else {
+      document.querySelector('.line').style.minHeight = '0em'
+      video.muted = false;
+  }
 });
 
 

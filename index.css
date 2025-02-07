@@ -278,6 +278,48 @@ body{
   z-index: 2;
 }
 
+.muteCheck {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 8%;
+  right: 4%;
+  padding: 0.35em;
+  width: 2em;
+  height: 2em;
+  transition: all 0.2s ease-in-out;
+  background-color: #404040;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.soundSVG path{
+  stroke: white;
+}
+.muteCheck .checkboxMain {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  width: 0.1em;
+  min-height: 1.25em;
+  border-radius: 20px;
+  transform: rotate(45deg);
+  background: white;
+  transition: all .2s ease-in-out;
+}
+.muteCheck input[type=checkbox] {
+  display: none;
+}
+
+
 .videoLoad{
   position: absolute;
   width: 99.5%;
@@ -561,6 +603,19 @@ footer{
     animation: move1 1.8s ease-in-out infinite;
     animation-delay: 1.2s;
   }
+  .muteCheck{
+    width: 1em;
+    padding: 0.2em;
+    height: 1em;
+  }
+  .soundSVG{
+    width: 18px;
+    height: 18px;
+  }
+  .line{
+    width: 0.085em;
+    min-height: 0.65em;
+  }
 }
 @media screen and (max-width: 425px) {
     .loader{
@@ -593,6 +648,9 @@ footer{
     }
     .welcomeText h1{
         font-size: 2.5em;
+    }
+    .muteCheck{
+      padding: 0.15em 0.2em 0.15em 0.15em;
     }
 }
 
