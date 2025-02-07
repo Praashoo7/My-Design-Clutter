@@ -284,7 +284,7 @@ body{
   justify-content: center;
   position: absolute;
   bottom: 8%;
-  right: 4%;
+  right: 2.25%;
   padding: 0.35em;
   width: 2em;
   height: 2em;
@@ -653,6 +653,7 @@ footer{
         font-size: 2.5em;
     }
     .muteCheck{
+      right: 4%;
       padding: 0.15em 0.2em 0.15em 0.15em;
     }
 }
