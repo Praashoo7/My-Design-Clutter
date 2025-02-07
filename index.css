@@ -293,6 +293,9 @@ body{
   border-radius: 50%;
   cursor: pointer;
 }
+.muteCheck:hover{
+  opacity: 0.7;
+}
 .soundSVG path{
   stroke: white;
 }
