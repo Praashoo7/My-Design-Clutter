@@ -152,3 +152,14 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   });
 });
+
+
+
+/* NOTE */
+
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+if(isTouchDevice){
+  document.getElementById('note').innerHTML = 'PS : Tap on the Images to see the Actual site Design!'
+} else {
+  document.getElementById('note').innerHTML = 'PS : Hover over the Images to see the Actual site Design!'
+}
