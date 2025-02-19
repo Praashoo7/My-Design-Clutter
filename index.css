@@ -573,6 +573,9 @@ footer{
         width: 40%;
         margin-left: 0;
     }
+    .pencilpng{
+      filter: drop-shadow(7px 7px 7px rgba(0, 0, 0, 0.35));
+    }
 }
 @media screen and (max-width: 690px) {
   .loader{
@@ -655,6 +658,9 @@ footer{
     .muteCheck{
       right: 4%;
       padding: 0.15em 0.2em 0.15em 0.15em;
+    }
+    .pencilpng{
+      filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.35));
     }
 }
 
