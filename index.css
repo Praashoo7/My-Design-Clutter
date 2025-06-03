@@ -14,7 +14,7 @@
 }
 
 ::selection{
-    background-color: #c5c5c5;
+    background-color: var(--selection-color);
 }
 
 body::-webkit-scrollbar {
@@ -26,7 +26,7 @@ body::-webkit-scrollbar-track {
   transition: .4s ease-in-out;
 }
 body::-webkit-scrollbar-thumb {
-  background-color: #252525; 
+  background-color: var(--scrollbar-thumb-bg); 
   transition: .4s ease-in-out;
   border-radius: 10px;
   cursor: pointer;
@@ -40,27 +40,37 @@ body{
     justify-content: center;
     flex-direction: column;
     height: 100%;
-    background-color: #f1f1f1;
-    background-image: linear-gradient(0deg, transparent 24%, #e1e1e1 25%, #e1e1e1 26%, transparent 27%,transparent 74%, #e1e1e1 75%, #e1e1e1 76%, transparent 77%,transparent),
-        linear-gradient(90deg, transparent 24%, #e1e1e1 25%, #e1e1e1 26%, transparent 27%,transparent 74%, #e1e1e1 75%, #e1e1e1 76%, transparent 77%,transparent);
-    background-size: 55px 55px;
+    background-color: var(--bg-color-light);
     overflow-x: hidden;
     padding-inline: 0.6rem;
+    transition: all 0.2s ease-in-out;
+}
+.bgTexture{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(0deg, transparent 24%, var(--bg-gradient) 25%, var(--bg-gradient) 26%, transparent 27%,transparent 74%, var(--bg-gradient) 75%, var(--bg-gradient) 76%, transparent 77%,transparent),
+    linear-gradient(90deg, transparent 24%, var(--bg-gradient) 25%, var(--bg-gradient) 26%, transparent 27%,transparent 74%, var(--bg-gradient) 75%, var(--bg-gradient) 76%, transparent 77%,transparent);
+  background-size: 55px 55px;
 }
 
 .main {
-    --bg-color: #e2e2e2;
-    --text-color: #e2e2e2;
-    --text-shadow-light: -8px -8px 12px rgb(255, 255, 255);
-    --text-shadow-dark: 8px 8px 12px rgba(0, 0, 0, 0.178);
-    --text-shadow-light1: -4px -4px 6px rgb(255, 255, 255);
-    --text-shadow-dark1: 4px 4px 6px rgba(0, 0, 0, 0.178);
+    --bg-color: var(--main-load-bg);
+    --text-color: var(--main-load-text-color);
+    --text-shadow-light: var(--main-load-text-shadow-light);
+    --text-shadow-dark: var(--main-load-text-shadow-dark);
+    --text-shadow-light1: var(--main-load-text-shadow-light1);
+    --text-shadow-dark1: var(--main-load-text-shadow-dark1);
     --caret-color: #262626;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease-in-out;
-    background-color: #e2e2e2;
+    background-color: var(--bg-color);
     position: fixed;
     width: 100%;
     height: 100%;
@@ -159,14 +169,32 @@ body{
     padding: 1.5em 2.5em 1.5em 2.5em;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
     border-radius: 10px;
-    background-image: url(textures/textFieldPaper.jpg);
-    background-repeat: no-repeat;
-    background-size: 101% 100%;
+    position: relative;
+    color: var(--text-color);
 }
-.welcome h1{
+.welcomeText::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(textures/textFieldPaper.jpg);
+  background-repeat: no-repeat;
+  background-size: 101% 100%;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  border-radius: 10px;
+  filter: var(--welcome-brightness);
+  transition: all 0.2s ease-in-out;
+}
+.welcomeText h1{
+    position: relative;
     font-family: A1;
     font-size: 4em;
     font-weight: normal;
+    z-index: 2;
 }
 
 .mainWrapper{
@@ -234,9 +262,9 @@ body{
     left: -1%;
     right: -1%;
     bottom: -1%;
-    background: #eeeeee;
+    background: var(--img-load-bg);
     border-radius: 15px;
-    background: linear-gradient(110deg, #d6d6d6 8%, #f5f5f5 18%, #d6d6d6 33%);
+    background: linear-gradient(110deg, var(--img-load-gradient1) 8%, var(--img-load-gradient2) 18%, var(--img-load-gradient1) 33%);
     background-size: 200% 400%;
     -webkit-animation: 4.5s shine linear infinite;
             animation: 4.5s shine linear infinite;
@@ -261,9 +289,10 @@ body{
     width: 100.1%;
     height: 100.1%;
     border-radius: 15px;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    box-shadow: var(--card-shadow);
     transition: all 0.2s ease-in-out;
     z-index: 4;
+    filter: var(--img-brightness);
 }
 .imageData video{
   position: absolute;
@@ -369,11 +398,31 @@ body{
     text-align: right;
     padding: 0.5em;
     position: relative;
-    background-color: #ffffff;
-    background-image: url(textures/cream-paper.png);
+    background-color: var(--card-bg);
+    color: var(--card-text);
     transform: rotateZ(-2deg);
     border-radius: 15px;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: var(--card-shadow);
+}
+.data span, .dataUD span{
+  position: relative;
+    z-index: 2;
+}
+.textureDiv{
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    opacity: var(--texture-opacity);
+    border-radius: 15px;
+    height: 100%;
+    background-image: url(textures/cream-paper.png);
+    z-index: 1;
+    transition: all 0.2s ease-in-out;
 }
 .dataUD{
     text-align: left;
@@ -381,7 +430,8 @@ body{
 .data::after, .dataUD::after{
     content: "";
     position: absolute;
-    background-image: url(textures/up-right-arrow.png);
+    background-image: var(--arrow);
+    transition: all 0.2s ease-in-out;
     width: 1.5em;
     height: 1.5em;
     background-size: 1.5em 1.5em;
@@ -389,6 +439,7 @@ body{
     bottom: 0;
     left: 0;
     margin-left: -1em;
+    z-index: 2;
 }
 .dataUD::after{
     bottom: 0;
@@ -408,6 +459,7 @@ body{
     top: 0;
     transform: rotateZ(90deg);
     margin: -0.75em -0.75em 0 0;
+    z-index: 2;
 }
 .dataUD::before{
     right: auto;
@@ -497,6 +549,9 @@ footer{
     font-size: 4em;
     margin-top: 2em;
     font-family: A1;
+    color: var(--card-text);
+    transition: all 0.2s ease-in-out;
+    z-index: 1;
 }
 
 @media screen and (max-width: 1625px) {
@@ -514,8 +569,8 @@ footer{
 }
 @media (min-width: 1380px) and (max-width: 1490px) {
   .data::after, .dataUD::after{
-    margin-bottom: 0.5em;
-    margin-left: -1em;
+      margin-bottom: 0.5em;
+      margin-left: -1em;
   }
   .dataUD::after{
       margin-left: 0;
@@ -559,7 +614,7 @@ footer{
         width: 15em;
         margin-left: -5.5em;
     }
-    .imageData img, .data, .dataUD, .imageData::after, .imageData video, .videoLoad, .imageData{
+    .imageData img, .data, .dataUD, .imageData::after, .imageData video, .videoLoad, .imageData, .textureDiv{
         border-radius: 10px;
     }
 }
@@ -646,7 +701,7 @@ footer{
     .data, .dataUD, footer{
         font-size: 1.5em;
     }
-    .imageData img, .data, .dataUD, .imageData::after, .imageData video, .videoLoad, .imageData{
+    .imageData img, .data, .dataUD, .imageData::after, .imageData video, .videoLoad, .imageData, .textureDiv{
         border-radius: 5px;
     }
     .welcomeText{
@@ -679,20 +734,39 @@ footer{
   width: 100%;
   padding: 0.5em;
   position: relative;
-  background-color: #ffffff;
-  background-image: url(textures/cream-paper.png);
+  background-color: var(--card-bg);
+  color: var(--card-text);
   transform: rotateZ(-2deg);
   border-radius: 5px;
-  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+  box-shadow: var(--card-shadow);
+}
+.small_device_card::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: var(--texture-opacity);
+    border-radius: 5px;
+    background-image: url("textures/cream-paper.png");
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 .small_device_text{
+  position: relative;
   font-size: 1.5em;
+  z-index: 2;
   text-shadow: 1px 1px 1px rgb(0, 0, 0, 0.5);
 }
 
 @media only screen and (max-width: 279px) {
-  .main, .welcome, .mainWrapper, footer, .pencilpng{
+  .main, .welcome, .mainWrapper, footer, .pencilpng, .theme-switch-second{
       display: none;
+  }
+  .theme-switch-second{
+    opacity: 0;
   }
   body{
     margin: 0;
@@ -710,4 +784,114 @@ footer{
   .small_device_card{
       font-size: 0.75em;
   }
+}
+
+
+
+/* THEME */
+
+.theme-switch-second {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+    background-color: transparent;
+    border: none;
+    transition: .4s;
+  }
+  
+  .theme-switch-second .slider-second {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    transition: .4s ease-in-out;
+    overflow: visible;
+    fill: var(--text-color);
+  }
+
+  @media screen and (max-width: 425px) {
+    .theme-switch-second {
+      width: 3em;
+      height: 3em;
+    }
+    .theme-switch-second .slider-second {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+  .theme-switch-second:hover{
+    cursor: pointer;
+  }
+  
+  #b1, #b2, #bulbL{
+    fill: var(--text-color1);
+  }
+  .theme-switch-second input[type=checkbox]:checked + .slider-second #bulbL {
+    fill: rgb(255, 255, 0);
+    filter: url(#yellow-glow);
+  }
+  
+  .theme-switch-second input[type=checkbox] {
+    visibility: hidden;
+  }
+  
+  .theme-switch-second .slider-second {
+    transition: 300ms ease;
+  }
+
+
+:root {
+    --bg-color-light: #f1f1f1;
+    --bg-gradient: #e1e1e1;
+    --text-color: black;
+    --text-color1: #353535;
+    --card-bg: #ffffff;
+    --card-text: #171717;
+    --card-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    --arrow: url(textures/up-right-arrow.png);
+    --welcome-brightness: brightness(1);
+    --img-brightness: brightness(1);
+    --selection-color: #c5c5c5;
+    --scrollbar-thumb-bg: #252525;
+    --texture-opacity: 1;
+    --img-load-bg: #eeeeee;
+    --img-load-gradient1: #d6d6d6; 
+    --img-load-gradient2: #f5f5f5;
+    --main-load-bg: #e2e2e2;
+    --main-load-text-color: #e2e2e2;
+    --main-load-text-shadow-light: -8px -8px 12px rgb(255, 255, 255);
+    --main-load-text-shadow-dark: 8px 8px 12px rgba(0, 0, 0, 0.178);
+    --main-load-text-shadow-light1: -4px -4px 6px rgb(255, 255, 255);
+    --main-load-text-shadow-dark1: 4px 4px 6px rgba(0, 0, 0, 0.178);
+}
+[data-theme="dark"] {
+    --bg-color-light: #181818;
+    --bg-gradient: #242424;
+    --text-color: #c7c7c7;
+    --text-color1: #b4b4b4;
+    --card-bg: #000000;
+    --card-text: #c5c5c5;
+    --card-shadow: rgba(2, 6, 14, 0.25) 0px 2px 2px, rgba(2, 7, 15, 0.13) 0px 0px 2px 2px;
+    --arrow: url(textures/up-right-arrow-d.png);
+    --welcome-brightness: brightness(0.25);
+    --img-brightness: brightness(0.85);
+    --selection-color: #3a3a3a;
+    --scrollbar-thumb-bg: #c5c5c5;
+    --texture-opacity: 0.45;
+    --img-load-bg: #111111;
+    --img-load-gradient1: #292929; 
+    --img-load-gradient2: #0a0a0a;
+    --main-load-bg: #212121;
+    --main-load-text-color: #212121;
+    --main-load-text-shadow-light: -6px -6px 10px rgb(0, 0, 0);
+    --main-load-text-shadow-dark: 6px 6px 10px rgba(255, 255, 255, 0.178);
+    --main-load-text-shadow-light1: -3px -3px 5px rgb(0, 0, 0);
+    --main-load-text-shadow-dark1: 3px 3px 5px rgba(255, 255, 255, 0.178);
 }

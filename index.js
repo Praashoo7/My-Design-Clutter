@@ -1,3 +1,38 @@
+/* THEME */
+
+const toggleSwitchsecond = document.querySelector('.theme-switch-second input[type="checkbox"]');
+
+toggleSwitchsecond.addEventListener('change', () => {
+  document.getElementById('bgTexture').style.opacity = 0
+  setTimeout(() => {
+    document.getElementById('bgTexture').style.opacity = 1
+  }, 200);
+})
+toggleSwitchsecond.addEventListener('change', switchTheme, false);
+function switchTheme(e) {
+  if (e.target.checked) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+  }
+  else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+  }    
+}
+const currentThemeSecond = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+
+if (currentThemeSecond) {
+    document.documentElement.setAttribute('data-theme', currentThemeSecond);
+
+    if (currentThemeSecond === 'dark') {
+        toggleSwitchsecond.checked = true;
+    }
+    else if (currentThemeSecond === 'light') {
+    }
+}
+
+
+
 /* MAINLOADER */
 
 document.body.style.overflowY = 'hidden'
